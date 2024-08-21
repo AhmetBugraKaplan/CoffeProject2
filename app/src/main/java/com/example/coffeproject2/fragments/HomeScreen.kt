@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.coffeproject2.R
+import com.example.coffeproject2.adapters.CoffeDetailsAdapter
 import com.example.coffeproject2.adapters.CoffeNameAdapter
 import com.example.coffeproject2.data.Coffees
 import com.example.coffeproject2.databinding.FragmentHomeScreenBinding
@@ -15,6 +16,7 @@ import com.example.coffeproject2.databinding.FragmentHomeScreenBinding
 class HomeScreen : Fragment() {
     private lateinit var binding: FragmentHomeScreenBinding
     private lateinit var adapter : CoffeNameAdapter
+    private lateinit var adapterr: CoffeDetailsAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomeScreenBinding.inflate(inflater,container,false)
 
@@ -31,11 +33,23 @@ class HomeScreen : Fragment() {
         val c10 = Coffees("asdas", "latte", 12.50)
 
 
+        var coffeList =  ArrayList<Coffees>()
+
+
+        binding.recCoffeDetails.setHasFixedSize(true)
+        binding.recViewCoffeName.layoutManager =
+            LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+
+        adapterr = CoffeDetailsAdapter( requireContext(),coffeList)
+
+        binding.recCoffeDetails.adapter = adapterr
+
+
+
+
         binding.recViewCoffeName.setHasFixedSize(true)
         binding.recViewCoffeName.layoutManager =
             LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
-
-        var coffeList =  ArrayList<Coffees>()
 
         coffeList.add(c1)
         coffeList.add(c2)
