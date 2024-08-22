@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeproject2.R
 import com.example.coffeproject2.data.Coffees
+import com.example.coffeproject2.data.CoffessType
 
 class CoffeNameAdapter(val mContext: Context,
-                        val coffeNameList:ArrayList<Coffees>)
+                        val coffeNameList:ArrayList<CoffessType>)
     :RecyclerView.Adapter<CoffeNameAdapter.CardViewHolder>(){
 
     inner class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
@@ -37,7 +38,7 @@ class CoffeNameAdapter(val mContext: Context,
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val coffe = coffeNameList[position]
 
-        holder.textViewCoffeName.text = coffe.CoffeName
+        holder.textViewCoffeName.text = coffe.type
 
 
 
