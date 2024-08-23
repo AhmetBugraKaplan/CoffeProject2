@@ -15,17 +15,12 @@ class CoffeNameAdapter(val mContext: Context,
                         val itemClickListener:(CoffessType) -> Unit)
     :RecyclerView.Adapter<CoffeNameAdapter.CardViewHolder>(){
 
+        private var selectedPosition = RecyclerView.NO_POSITION
+
+
     inner class CardViewHolder(view: View):RecyclerView.ViewHolder(view){
 
-
-        var button : Button
-
-
-        init {
-
-            button = view.findViewById(R.id.buttonCaffeType)
-
-        }
+        var button : Button = view.findViewById(R.id.buttonCaffeType)
 
     }
 
@@ -44,7 +39,21 @@ class CoffeNameAdapter(val mContext: Context,
         val coffe = coffeNameList[position]
 
         holder.button.text = coffe.type
+
+        if(selectedPosition == position){
+            holder.button.setBackgroundColor(mContext.getColor(R.color.selected_button_color))
+        }else{
+            holder.button.setBackgroundColor(mContext.getColor(R.color.default_button_color))
+        }
+
         holder.button.setOnClickListener {
+            // Yeni buton seçildiğinde eski butonun rengini sıfırla
+            notifyItemChanged(selectedPosition)
+            //Yeni seçilen butonu güncelle
+            selectedPosition = holder.adapterPosition
+            notifyItemChanged(selectedPosition)
+
+
             itemClickListener(coffe)
         }
 
