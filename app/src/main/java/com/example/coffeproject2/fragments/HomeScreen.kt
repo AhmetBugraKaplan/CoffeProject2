@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.coffeproject2.adapters.CoffeDetailsAdapterr
 import com.example.coffeproject2.adapters.CoffeNameAdapter
+import com.example.coffeproject2.data.Coffees
 import com.example.coffeproject2.data.CoffessType
 import com.example.coffeproject2.databinding.FragmentHomeScreenBinding
 import com.google.firebase.database.DataSnapshot
@@ -19,8 +22,10 @@ import com.google.firebase.database.ValueEventListener
 
 class HomeScreen : Fragment() {
     private lateinit var binding: FragmentHomeScreenBinding
-    private lateinit var adapter : CoffeNameAdapter
+    private lateinit var adapterCoffeName : CoffeNameAdapter
+    private lateinit var adapterCDetails:CoffeDetailsAdapterr
     private lateinit var coffeTypeList : ArrayList<CoffessType>
+    private lateinit var coffeList : ArrayList<Coffees>
 
 
     //Firebase
@@ -33,15 +38,30 @@ class HomeScreen : Fragment() {
         binding = FragmentHomeScreenBinding.inflate(inflater,container,false)
 
         coffeTypeList = ArrayList()
+        coffeList = ArrayList()
 
-
+        //Kahve Türlerinin bulunduğu recview
         binding.recViewCoffeName.setHasFixedSize(true)
         binding.recViewCoffeName.layoutManager =
             LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
-        adapter = CoffeNameAdapter(requireContext(),coffeTypeList)
+        adapterCoffeName = CoffeNameAdapter(requireContext(),coffeTypeList)
 
-        binding.recViewCoffeName.adapter = adapter
+        binding.recViewCoffeName.adapter = adapterCoffeName
+
+        //Seçilen Kahve türüne göre filtreleme ile gelen kahve çeşitlerinin bulunduğu recView
+
+            binding.recViewCDetails.setHasFixedSize(true)
+        binding.recViewCDetails.layoutManager = StaggeredGridLayoutManager(
+            2,StaggeredGridLayoutManager.VERTICAL
+        )
+
+        adapterCDetails = CoffeDetailsAdapterr(requireContext(),coffeList)
+
+        binding.recViewCDetails.adapter = adapterCDetails
+
+
+
 
         //Firebase
 
@@ -51,6 +71,7 @@ class HomeScreen : Fragment() {
 
 
         getAllTypes()
+        getAllCoffee()
 
         return binding.root
     }
@@ -69,11 +90,34 @@ class HomeScreen : Fragment() {
                         coffeTypeList.add(coffeType)
                     }
                 }
-                adapter.notifyDataSetChanged()
+                adapterCoffeName.notifyDataSetChanged()
             }
             override fun onCancelled(error: DatabaseError) {
                 // Hata yönetimi yapılabilir
             }
         })
     }
+
+    private fun getAllCoffee() {
+        //***//
+        referanceCoffes.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                coffeList.clear()
+                for (c in snapshot.children) {
+                    val coffee = c.getValue(Coffees::class.java)
+                    if (coffee != null) {
+                        coffeList.add(coffee)
+                        println(coffee.CoffeName)
+                    }
+                }
+                adapterCDetails.notifyDataSetChanged()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                // Hata yönetimi yapılabilir
+            }
+        })
+    }
+
 }
