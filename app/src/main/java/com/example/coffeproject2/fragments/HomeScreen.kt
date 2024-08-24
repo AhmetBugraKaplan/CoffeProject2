@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.coffeproject2.adapters.CoffeDetailsAdapterr
@@ -22,15 +23,15 @@ import com.google.firebase.database.ValueEventListener
 
 class HomeScreen : Fragment() {
     private lateinit var binding: FragmentHomeScreenBinding
-    private lateinit var adapterCoffeName : CoffeNameAdapter
-    private lateinit var adapterCDetails:CoffeDetailsAdapterr
-    private lateinit var coffeTypeList : ArrayList<CoffessType>
-    private lateinit var coffeList : ArrayList<Coffees>
-    private lateinit var clickedType:String
+    private lateinit var adapterCoffeName: CoffeNameAdapter
+    private lateinit var adapterCDetails: CoffeDetailsAdapterr
+    private lateinit var coffeTypeList: ArrayList<CoffessType>
+    private lateinit var coffeList: ArrayList<Coffees>
+    private lateinit var clickedType: String
 
     //Firebase
-    private lateinit var referanceCoffes:DatabaseReference
-    private lateinit var referanceCoffesType:DatabaseReference
+    private lateinit var referanceCoffes: DatabaseReference
+    private lateinit var referanceCoffesType: DatabaseReference
 
 
     override fun onCreateView(
@@ -50,7 +51,7 @@ class HomeScreen : Fragment() {
 
         adapterCoffeName = CoffeNameAdapter(requireContext(), coffeTypeList) { c ->
             clickedType = c.type.toString()
-            getAllCoffee()
+            getClickedCoffee()
         }
 
         binding.recViewCoffeName.adapter = adapterCoffeName
@@ -73,12 +74,62 @@ class HomeScreen : Fragment() {
         referanceCoffes = database.getReference("coffees")
         referanceCoffesType = database.getReference("types")
 
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                if (query != null) {
+                    searchCoffee(query)
+                }
+
+
+                return true
+            }
+            // onQueryTextChange içinde
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText.isNullOrEmpty()) {
+                    binding.recViewCoffeName.visibility = View.VISIBLE
+                    getClickedCoffee() // Arama bittiğinde eski verileri getir
+                } else {
+                    binding.recViewCoffeName.visibility = View.GONE
+                    searchCoffee(newText)
+                }
+                return true
+            }
+
+        })
+
 
         getAllTypes()
         //getAllCoffee()
 
         return binding.root
     }
+
+    // Search bar ile kahve araması yapma işlemi
+    // Search bar ile kahve araması yapma işlemi
+    private fun searchCoffee(query: String) {
+        referanceCoffes.addListenerForSingleValueEvent(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
+            override fun onDataChange(snapshot: DataSnapshot) {
+                coffeList.clear()
+                for (c in snapshot.children) {
+                    val coffee = c.getValue(Coffees::class.java)
+                    if (coffee != null &&
+                        coffee.CoffeName!!.contains(query, ignoreCase = true)
+                    ) {
+                        coffeList.add(coffee)
+                    }
+                }
+                adapterCDetails.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Hata yönetimi yapılabilir
+            }
+        })
+    }
+
+
 
 
     private fun getAllTypes() {
@@ -98,7 +149,7 @@ class HomeScreen : Fragment() {
 
                 if (coffeTypeList.isNotEmpty()) {
                     clickedType = coffeTypeList[0].type.toString()
-                    getAllCoffee()
+                    getClickedCoffee()
                 }
 
             }
@@ -109,7 +160,7 @@ class HomeScreen : Fragment() {
         })
     }
 
-    private fun getAllCoffee() {
+    private fun getClickedCoffee() {
         //***//
 
         referanceCoffes.addValueEventListener(object : ValueEventListener {
@@ -126,10 +177,12 @@ class HomeScreen : Fragment() {
                 }
                 adapterCDetails.notifyDataSetChanged()
             }
+
             override fun onCancelled(error: DatabaseError) {
                 // Hata yönetimi yapılabilir
             }
         })
     }
+
 
 }
