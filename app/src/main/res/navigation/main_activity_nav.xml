@@ -9,10 +9,26 @@
         android:id="@+id/loginFragment"
         android:name="com.example.coffeproject2.fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/LoginToRegister"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/LogInToHome"
+            app:destination="@id/homeScreen" />
+    </fragment>
     <fragment
         android:id="@+id/homeScreen"
         android:name="com.example.coffeproject2.fragments.HomeScreen"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.coffeproject2.fragments.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/registerToLogin"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

@@ -4,29 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.LoginFragment">
+    tools:context=".fragments.RegisterFragment">
 
-    <Button
-        android:id="@+id/signInButton"
-        android:layout_width="116dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="40dp"
-        android:text="Sign In"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/signUpButton"
-        app:layout_constraintHorizontal_bias="0.097"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordText" />
+    <!-- TODO: Update blank fragment layout -->
 
     <EditText
-        android:id="@+id/mailText"
+        android:id="@+id/registerMail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
         android:ems="10"
-        android:hint="Enter your mail"
+        android:hint="Enter new mail"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -34,26 +22,28 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/PasswordText"
+        android:id="@+id/registerPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="Enter your password"
+        android:hint="Enter new password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mailText" />
+        app:layout_constraintTop_toBottomOf="@+id/registerMail" />
 
     <Button
-        android:id="@+id/signUpButton"
-        android:layout_width="116dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="50dp"
-        android:text="Sign Up"
+        android:id="@+id/registerButton"
+        android:layout_width="118dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="50dp"
+        android:text="Register"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PasswordText" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerPassword" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
