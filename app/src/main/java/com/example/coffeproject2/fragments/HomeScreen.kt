@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.coffeproject2.adapters.CoffeDetailsAdapterr
@@ -14,6 +15,7 @@ import com.example.coffeproject2.adapters.CoffeNameAdapter
 import com.example.coffeproject2.data.Coffees
 import com.example.coffeproject2.data.CoffessType
 import com.example.coffeproject2.databinding.FragmentHomeScreenBinding
+import com.example.coffeproject2.viewModels.ViewModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -28,17 +30,15 @@ class HomeScreen : Fragment() {
     private lateinit var coffeTypeList: ArrayList<CoffessType>
     private lateinit var coffeList: ArrayList<Coffees>
     private lateinit var clickedType: String
+    private lateinit var viewModel: ViewModel
 
     //Firebase
     private lateinit var referanceCoffes: DatabaseReference
     private lateinit var referanceCoffesType: DatabaseReference
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
 
         coffeTypeList = ArrayList()
@@ -63,7 +63,11 @@ class HomeScreen : Fragment() {
             2, StaggeredGridLayoutManager.VERTICAL
         )
 
-        adapterCDetails = CoffeDetailsAdapterr(requireContext(), coffeList)
+        adapterCDetails = CoffeDetailsAdapterr(requireContext(), coffeList){c->
+            viewModel = ViewModelProvider(requireActivity()).get(com.example.coffeproject2.viewModels.ViewModel::class.java)
+            viewModel.CartCoffeList.add(c)
+
+        }
 
         binding.recViewCDetails.adapter = adapterCDetails
 

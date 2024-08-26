@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -12,7 +13,8 @@ import com.example.coffeproject2.R
 import com.example.coffeproject2.data.Coffees
 
 class CoffeDetailsAdapterr(val mContext: Context,
-                            val coffeList:ArrayList<Coffees>)
+                            val coffeList:ArrayList<Coffees>,
+                            val itemClickListener: (Coffees) -> Unit)
     :RecyclerView.Adapter<CoffeDetailsAdapterr.CardViewHolder>(){
 
     inner class CardViewHolder(view:View):RecyclerView.ViewHolder(view){
@@ -50,7 +52,14 @@ class CoffeDetailsAdapterr(val mContext: Context,
         holder.textViewCName.text =coffe.CoffeName
         holder.textViewCDetails.text = coffe.CoffeDetails
         holder.textViewCPrice.text = coffe.CoffePrice.toString()
+
+        holder.ImageButton.setOnClickListener {
+            itemClickListener(coffe)
+        }
+
     }
+
+
 
 
 }

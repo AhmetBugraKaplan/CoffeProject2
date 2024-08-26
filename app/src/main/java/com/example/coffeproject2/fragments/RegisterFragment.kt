@@ -18,10 +18,7 @@ class RegisterFragment : Fragment() {
     private  lateinit var binding: FragmentRegisterBinding
     private lateinit var auth: FirebaseAuth
     private lateinit var navController: NavController
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegisterBinding.inflate(inflater,container,false)
 
         auth = FirebaseAuth.getInstance()

@@ -7,5 +7,7 @@
     <item
         android:id="@+id/homeScreen"
         android:title="Home" />
-    <item android:title="Profil" />
+    <item
+        android:id="@+id/cartFragment"
+        android:title="Cart" />
 </menu>

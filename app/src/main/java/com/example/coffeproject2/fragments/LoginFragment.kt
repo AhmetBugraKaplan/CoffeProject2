@@ -35,6 +35,7 @@ class LoginFragment : Fragment() {
 
         }
 
+
         binding.signUpButton.setOnClickListener {
             Log.e("hata","girdik")
             navController.navigate(R.id.LoginToRegister)
