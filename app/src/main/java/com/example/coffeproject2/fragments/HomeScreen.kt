@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -67,6 +68,9 @@ class HomeScreen : Fragment() {
             viewModel = ViewModelProvider(requireActivity()).get(com.example.coffeproject2.viewModels.ViewModel::class.java)
             viewModel.CartCoffeList.add(c)
 
+            Toast.makeText(requireContext(),"${c.CoffeName} added to cart",Toast.LENGTH_SHORT).show()
+
+            viewModel.totalPrice += c.CoffePrice!!
         }
 
         binding.recViewCDetails.adapter = adapterCDetails
@@ -176,7 +180,6 @@ class HomeScreen : Fragment() {
                     val coffee = c.getValue(Coffees::class.java)
                     if (coffee != null && coffee.CoffeType == clickedType) {
                         coffeList.add(coffee)
-                        println(coffee.CoffeName)
                     }
                 }
                 adapterCDetails.notifyDataSetChanged()

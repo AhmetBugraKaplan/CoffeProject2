@@ -15,4 +15,6 @@ class ViewModel : ViewModel() {
 
     var CartCoffeList = ArrayList<Coffees>()
 
+    var totalPrice:Double = 0.0
+
 }
