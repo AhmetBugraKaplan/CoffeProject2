@@ -25,7 +25,7 @@ class CoffeDetailsAdapterr(
 
         var imageView: ImageView = view.findViewById(R.id.imageView)
         var textViewCName: TextView = view.findViewById(R.id.textViewCName)
-        var textViewCDetails: TextView = view.findViewById(R.id.textViewCDetails)
+       // var textViewCDetails: TextView = view.findViewById(R.id.textViewCDetails)
         var textViewCPrice: TextView = view.findViewById(R.id.textViewCPrice)
         var ImageButton: ImageButton = view.findViewById(R.id.imageButton)
     }
@@ -45,7 +45,7 @@ class CoffeDetailsAdapterr(
         val coffe = coffeList[position]
 
         // Firebase Storage'dan resmin URL'sini al ve Picasso ile ImageView'e yükle
-        val imageRef = storage.reference.child("images/kahvee.jfif")
+        val imageRef = storage.reference.child("images/${coffe.imageView}.jpg")
         imageRef.downloadUrl.addOnSuccessListener { uri ->
             Picasso.get()
                 .load(uri)
@@ -57,8 +57,7 @@ class CoffeDetailsAdapterr(
         }
 
         holder.textViewCName.text = coffe.CoffeName
-        holder.textViewCDetails.text = coffe.CoffeDetails
-        holder.textViewCPrice.text = coffe.CoffePrice.toString()
+        holder.textViewCPrice.text = "${coffe.CoffePrice.toString()} $"
 
         holder.ImageButton.setOnClickListener {
             itemClickListener(coffe)

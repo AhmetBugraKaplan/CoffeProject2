@@ -40,7 +40,7 @@ class CoffeCartAdapter(val mContext : Context,
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val coffee = CoffeCartList[position]
 
-        holder.ImageViewCoffee.setImageResource(R.drawable.kahvee)
+        holder.ImageViewCoffee.setImageResource(R.drawable.ic_launcher_foreground)
         holder.textViewType.text = coffee.CoffeType
         holder.textViewName.text = coffee.CoffeName
         holder.textViewPrice.text = coffee.CoffePrice.toString()

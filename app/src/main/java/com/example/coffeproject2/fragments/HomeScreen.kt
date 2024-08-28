@@ -41,6 +41,10 @@ class HomeScreen : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
+        binding.recViewCDetails.visibility = View.VISIBLE
+
+
+        binding.searchView
 
         coffeTypeList = ArrayList()
         coffeList = ArrayList()
@@ -82,6 +86,8 @@ class HomeScreen : Fragment() {
         referanceCoffes = database.getReference("coffees")
         referanceCoffesType = database.getReference("types")
 
+        binding.searchView.queryHint = "Search for coffee"
+
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
 
@@ -95,6 +101,7 @@ class HomeScreen : Fragment() {
             // onQueryTextChange içinde
             override fun onQueryTextChange(newText: String?): Boolean {
                 if (newText.isNullOrEmpty()) {
+                    binding.searchView.queryHint = "Search for coffee"
                     binding.recViewCoffeName.visibility = View.VISIBLE
                     getClickedCoffee() // Arama bittiğinde eski verileri getir
                 } else {
@@ -113,7 +120,6 @@ class HomeScreen : Fragment() {
         return binding.root
     }
 
-    // Search bar ile kahve araması yapma işlemi
     // Search bar ile kahve araması yapma işlemi
     private fun searchCoffee(query: String) {
         referanceCoffes.addListenerForSingleValueEvent(object : ValueEventListener {

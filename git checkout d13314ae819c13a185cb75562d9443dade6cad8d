@@ -1,0 +1,78 @@
+[33mcommit d13314ae819c13a185cb75562d9443dade6cad8d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Wed Aug 28 12:07:15 2024 +0300
+
+    Sepette fiyat gösterme işlemi ve Picasso kütüphanesi ile resim ekleme eklendi
+
+[33mcommit 5b87f2d0ffde60fd3d34e75af3334d5d008dbd91[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Mon Aug 26 21:33:24 2024 +0300
+
+    Sepete ekleme ve sepetten silme işlemleri eklendi
+
+[33mcommit 21b6946811bf33ac5c488858a68fd9cf7e8e19b0[m
+Merge: f936f73 d1768e2
+Author: SerhatVahapoglu <131908003+SerhatVahapoglu@users.noreply.github.com>
+Date:   Sat Aug 24 22:52:14 2024 +0300
+
+    değişiklikler uygulandı
+
+[33mcommit f936f73221884dc6ef7d75e5ca181c081d0fc0da[m
+Author: SerhatVahapoglu <131908003+SerhatVahapoglu@users.noreply.github.com>
+Date:   Sat Aug 24 22:38:59 2024 +0300
+
+    a
+
+[33mcommit d1768e264ad904ac0d1406c560145e5b7c2d0a28[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Sat Aug 24 22:37:23 2024 +0300
+
+    abi
+
+[33mcommit 5be8953ca70c6d235e8993ee37a09e9ef0f9fe83[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Fri Aug 23 15:46:23 2024 +0300
+
+    Son değişiklikler eklendi
+
+[33mcommit 1ae815419c35fb4e4c41749fe0c4ca8aca642a61[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Fri Aug 23 13:53:44 2024 +0300
+
+    Artık seçilen değere göre güncelleme yapılıyor
+
+[33mcommit 601d9bfcb4c5d41c557852b62aedfc58938a514f[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Fri Aug 23 13:28:02 2024 +0300
+
+    son güncellemeler yapıldı
+
+[33mcommit 8c36353b1c829d219ba3739de7434216f8d84f30[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Thu Aug 22 23:26:55 2024 +0300
+
+    Serhatın eklediği kısımlar eklenmedi firebase  bağlantısı yapıldı
+
+[33mcommit 29f699c30e0d379b319da4034a40ad0c4490a81d[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Thu Aug 22 23:25:38 2024 +0300
+
+    RealTimeDataBase kodları eklendi
+
+[33mcommit 206287304d2ae2cb8a4b31998b807bc6f170cc12[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Wed Aug 21 19:51:47 2024 +0300
+
+    yeni özellikler eklend
+
+[33mcommit 5204a77d94272a3c721c45c98ce9d207409c3c58[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Wed Aug 21 17:34:20 2024 +0300
+
+    EkipProjesi
+
+[33mcommit 52e293c09a122f0b7839aae75279cb7fcbc029e0[m
+Author: AhmetBugraKaplan <bugrakaplann5@gmail.com>
+Date:   Wed Aug 21 17:33:17 2024 +0300
+
+    EkipProjesi

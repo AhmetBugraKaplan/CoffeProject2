@@ -13,7 +13,7 @@ import com.example.coffeproject2.data.Coffees
 import com.example.coffeproject2.databinding.FragmentCartBinding
 import com.example.coffeproject2.viewModels.ViewModel
 import android.app.AlertDialog
-
+import android.graphics.Color
 
 
 class CartFragment : Fragment() {
@@ -27,6 +27,7 @@ class CartFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(com.example.coffeproject2.viewModels.ViewModel::class.java)
 
         binding.toolbar.title = "Order"
+        binding.toolbar.setBackgroundColor(Color.parseColor("#a6653f"))
 
         binding.textViewCartTotalPrice.text = viewModel.totalPrice.toString()
 
