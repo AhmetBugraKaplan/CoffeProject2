@@ -49,7 +49,7 @@ class CoffeDetailsAdapterr(
         imageRef.downloadUrl.addOnSuccessListener { uri ->
             Picasso.get()
                 .load(uri)
-                .placeholder(R.drawable.ic_launcher_foreground) // Yüklenirken gösterilecek resim
+                .placeholder(R.drawable.ref) // Yüklenirken gösterilecek resim
                 .into(holder.imageView)
         }.addOnFailureListener {
             // Hata durumunda varsayılan bir resim göster

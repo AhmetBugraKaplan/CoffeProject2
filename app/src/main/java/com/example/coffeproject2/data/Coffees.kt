@@ -1,9 +1,9 @@
 package com.example.coffeproject2.data
 
-data class Coffees(val imageView:String? = "",
+data class Coffees(val CoffeDetails:String? = "",
                    val CoffeName:String?= "",
-                   val CoffeDetails:String? = "",
+                   val CoffePrice  :Double? = 0.0,
                    val CoffeType:String? = "",
-                   val CoffePrice : Double? = 0.0,
-                    val CoffeId:Int? = 0) {
+                   val CoffeId : String? = "",
+                    val imageView:String? = "") {
 }

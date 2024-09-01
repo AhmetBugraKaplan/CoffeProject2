@@ -184,7 +184,7 @@ class HomeScreen : Fragment() {
                 coffeList.clear()
                 for (c in snapshot.children) {
                     val coffee = c.getValue(Coffees::class.java)
-                    if (coffee != null && coffee.CoffeType == clickedType) {
+                    if (coffee != null && coffee.CoffeType.equals(clickedType,ignoreCase = true)) {
                         coffeList.add(coffee)
                     }
                 }
