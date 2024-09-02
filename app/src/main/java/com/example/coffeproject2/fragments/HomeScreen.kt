@@ -43,6 +43,9 @@ class HomeScreen : Fragment() {
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
         binding.recViewCDetails.visibility = View.VISIBLE
 
+        viewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
+
+
 
         binding.searchView
 
@@ -68,14 +71,16 @@ class HomeScreen : Fragment() {
             2, StaggeredGridLayoutManager.VERTICAL
         )
 
-        adapterCDetails = CoffeDetailsAdapterr(requireContext(), coffeList){c->
-            viewModel = ViewModelProvider(requireActivity()).get(com.example.coffeproject2.viewModels.ViewModel::class.java)
-            viewModel.CartCoffeList.add(c)
-
-            Toast.makeText(requireContext(),"${c.CoffeName} added to cart",Toast.LENGTH_SHORT).show()
-
-            viewModel.totalPrice += c.CoffePrice!!
-        }
+        adapterCDetails = CoffeDetailsAdapterr(requireContext(), coffeList,
+            onImageButtonClick = { c ->
+                viewModel.CartCoffeList.add(c)
+                Toast.makeText(requireContext(),"${c.CoffeName} added to cart",Toast.LENGTH_SHORT).show()
+                viewModel.totalPrice += c.CoffePrice!!
+            },
+            onImageViewClick = { c ->
+                viewModel.selectedCoffee = c
+            }
+        )
 
         binding.recViewCDetails.adapter = adapterCDetails
 

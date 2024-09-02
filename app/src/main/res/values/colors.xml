@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="selected_button_color">#894B38</color>
     <color name="default_button_color">#E0D2D2</color>
-    <color name= "order_button_color">#9f653f</color>
+    <color name= "order_button_color">#c67c4e</color>
     <color name="background_color">#edeced</color>
+    <color name="background_colorr">#F9F2ED</color>
 </resources>

@@ -32,8 +32,13 @@
             app:destination="@id/loginFragment" />
     </fragment>
     <fragment
-        android:id="@+id/cartFragment"
+        android:id="@+id/fragment_cart"
         android:name="com.example.coffeproject2.fragments.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.coffeproject2.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

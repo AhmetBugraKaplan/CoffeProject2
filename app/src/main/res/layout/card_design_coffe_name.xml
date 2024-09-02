@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:backgroundTint="#edeced"
+        android:backgroundTint="@color/background_color"
         app:cardBackgroundColor="@color/background_color"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"

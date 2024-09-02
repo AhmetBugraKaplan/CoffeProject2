@@ -16,7 +16,9 @@ import com.squareup.picasso.Picasso
 class CoffeDetailsAdapterr(
     val mContext: Context,
     val coffeList: ArrayList<Coffees>,
-    val itemClickListener: (Coffees) -> Unit
+//    val itemClickListener: (Coffees) -> Unit
+    val onImageButtonClick : (Coffees) -> Unit,
+    val onImageViewClick : (Coffees) -> Unit
 ) : RecyclerView.Adapter<CoffeDetailsAdapterr.CardViewHolder>() {
 
     var storage: FirebaseStorage = FirebaseStorage.getInstance()
@@ -60,7 +62,11 @@ class CoffeDetailsAdapterr(
         holder.textViewCPrice.text = "${coffe.CoffePrice.toString()} $"
 
         holder.ImageButton.setOnClickListener {
-            itemClickListener(coffe)
+            onImageButtonClick(coffe)
+        }
+
+        holder.imageView.setOnClickListener {
+            onImageViewClick(coffe)
         }
     }
 }

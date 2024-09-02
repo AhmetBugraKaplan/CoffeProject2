@@ -6,8 +6,14 @@
         android:title="Login" />
     <item
         android:id="@+id/homeScreen"
+        android:icon="@drawable/home"
         android:title="Home" />
     <item
-        android:id="@+id/cartFragment"
+        android:id="@+id/fragment_cart"
+        android:icon="@drawable/cartt"
         android:title="Cart" />
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/profile"
+        android:title="Profile" />
 </menu>

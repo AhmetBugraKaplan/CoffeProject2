@@ -1,4 +1,4 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/order_button_color"/> <!-- Buton rengi -->
+    <solid android:color="#9B5844"/> <!-- Buton rengi -->
     <corners android:radius="16dp"/> <!-- Köşe yuvarlatma -->
 </shape>

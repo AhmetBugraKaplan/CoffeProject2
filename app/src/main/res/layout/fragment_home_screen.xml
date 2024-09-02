@@ -4,22 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#edeced"
+    android:background="@color/background_color"
     tools:context=".fragments.HomeScreen">
 
     <SearchView
         android:id="@+id/searchView"
         android:layout_width="407dp"
         android:layout_height="81dp"
-        android:backgroundTint="#FFFDFD"
+        android:backgroundTint="#edeced"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </SearchView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewCoffeName"
         android:layout_width="408dp"
-        android:layout_height="112dp"
+        android:layout_height="84dp"
         android:layout_marginTop="112dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -28,12 +30,23 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewCDetails"
-        android:layout_width="411dp"
-        android:layout_height="310dp"
-        android:layout_marginBottom="92dp"
+        android:layout_width="410dp"
+        android:layout_height="296dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="415dp"
+        android:layout_height="189dp"
+        android:layout_marginBottom="336dp"
+        android:src="@drawable/slidercoffee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

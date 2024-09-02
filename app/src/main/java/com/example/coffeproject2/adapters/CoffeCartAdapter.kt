@@ -10,11 +10,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coffeproject2.R
 import com.example.coffeproject2.data.Coffees
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 
 class CoffeCartAdapter(val mContext : Context,
                        val CoffeCartList:ArrayList<Coffees>,
                        val itemClickListener : (Coffees) -> Unit)
     :RecyclerView.Adapter<CoffeCartAdapter.CardViewHolder>(){
+
+    var storage: FirebaseStorage = FirebaseStorage.getInstance()
+
 
     inner class CardViewHolder(view : View) : RecyclerView.ViewHolder(view){
 
@@ -40,7 +45,18 @@ class CoffeCartAdapter(val mContext : Context,
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val coffee = CoffeCartList[position]
 
-        holder.ImageViewCoffee.setImageResource(R.drawable.ic_launcher_foreground)
+        // Firebase Storage'dan resmin URL'sini al ve Picasso ile ImageView'e yükle
+        val imageRef = storage.reference.child("images/${coffee.imageView}.jpg")
+        imageRef.downloadUrl.addOnSuccessListener { uri ->
+            Picasso.get()
+                .load(uri)
+                .placeholder(R.drawable.ref) // Yüklenirken gösterilecek resim
+                .into(holder.ImageViewCoffee)
+        }.addOnFailureListener {
+            // Hata durumunda varsayılan bir resim göster
+            holder.ImageViewCoffee.setImageResource(R.drawable.ic_launcher_foreground)
+        }
+
         holder.textViewType.text = coffee.CoffeType
         holder.textViewName.text = coffee.CoffeName
         holder.textViewPrice.text = coffee.CoffePrice.toString()

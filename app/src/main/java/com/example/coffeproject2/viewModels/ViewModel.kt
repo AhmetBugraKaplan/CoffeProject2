@@ -17,4 +17,9 @@ class ViewModel : ViewModel() {
 
     var totalPrice:Double = 0.0
 
+    var selectedCoffee : Coffees = Coffees()
+
+    var adress : String = ""
+    var PhoneNumber : String = ""
+
 }

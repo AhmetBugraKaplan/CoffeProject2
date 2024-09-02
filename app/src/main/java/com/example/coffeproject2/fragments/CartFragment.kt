@@ -14,6 +14,7 @@ import com.example.coffeproject2.databinding.FragmentCartBinding
 import com.example.coffeproject2.viewModels.ViewModel
 import android.app.AlertDialog
 import android.graphics.Color
+import android.view.Gravity
 
 
 class CartFragment : Fragment() {
@@ -26,10 +27,11 @@ class CartFragment : Fragment() {
         binding = FragmentCartBinding.inflate(inflater,container,false)
         viewModel = ViewModelProvider(requireActivity()).get(com.example.coffeproject2.viewModels.ViewModel::class.java)
 
-        binding.toolbar.title = "Order"
-        binding.toolbar.setBackgroundColor(Color.parseColor("#a6653f"))
+        binding.toolbar.foregroundGravity = Gravity.CENTER_HORIZONTAL
+        binding.toolbar.setBackgroundColor(Color.parseColor("#9B5844"))
 
         binding.textViewCartTotalPrice.text = viewModel.totalPrice.toString()
+
 
         if(viewModel.totalPrice > 10.0){
             binding.textViewCartDeliveryFee.text = "Free"
@@ -38,6 +40,9 @@ class CartFragment : Fragment() {
         }else{
             binding.textViewCartDeliveryFee.visibility = View.INVISIBLE
         }
+
+        binding.textView4.text = viewModel.adress
+
 
         binding.recViewCart.setHasFixedSize(true)
         binding.recViewCart.layoutManager =
