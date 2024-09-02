@@ -26,7 +26,6 @@ class ProfileFragment : Fragment() {
 
 
 
-
         viewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
 
         binding.buttonConfirm.setOnClickListener {
@@ -54,11 +53,6 @@ class ProfileFragment : Fragment() {
 
 
         }
-
-
-
-
-
 
         return binding.root
     }

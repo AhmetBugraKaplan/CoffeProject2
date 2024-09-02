@@ -30,9 +30,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recViewCDetails"
-        android:layout_width="410dp"
-        android:layout_height="296dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="409dp"
+        android:layout_height="360dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -42,8 +42,8 @@
         android:id="@+id/imageView5"
         android:layout_width="415dp"
         android:layout_height="189dp"
-        android:layout_marginBottom="336dp"
-        android:src="@drawable/slidercoffee"
+        android:layout_marginBottom="370dp"
+        android:src="@drawable/img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"

@@ -21,7 +21,11 @@
         android:id="@+id/homeScreen"
         android:name="com.example.coffeproject2.fragments.HomeScreen"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/homeToDetail"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.coffeproject2.fragments.RegisterFragment"
@@ -41,4 +45,9 @@
         android:name="com.example.coffeproject2.fragments.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.coffeproject2.fragments.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

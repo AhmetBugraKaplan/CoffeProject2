@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.DetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/CoffeDetailsNameText"
+        android:layout_width="281dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="35dp"
+        android:fontFamily="sans-serif-black"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/CoffeDescriptionText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/CoffeDetailImage"
+        android:layout_width="397dp"
+        android:layout_height="342dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/CoffeDetailsNameText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/CoffeDescriptionText"
+        android:layout_width="255dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="35dp"
+        android:fontFamily="sans-serif"
+        android:text="Description"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/CoffeeDataText"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/CoffeeDataText"
+        android:layout_width="302dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="80dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

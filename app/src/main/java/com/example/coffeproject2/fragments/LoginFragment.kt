@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.coffeproject2.R
 import com.example.coffeproject2.databinding.FragmentLoginBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -23,16 +24,21 @@ class LoginFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentLoginBinding.inflate(inflater,container,false)
 
+        //Bottom bar invis yapma
+
+       val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+       bottomNavigationView.visibility = View.GONE
+
+
+
         auth = FirebaseAuth.getInstance()
         navController = findNavController()
 
         binding.signInButton.setOnClickListener {
-
             val email = binding.mailText.text.toString()
             val password = binding.PasswordText.text.toString()
 
             signIn(email,password)
-
         }
 
 

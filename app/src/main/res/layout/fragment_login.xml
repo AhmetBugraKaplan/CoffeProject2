@@ -9,6 +9,8 @@
 
     <Button
         android:id="@+id/signInButton"
+        android:background="@drawable/button"
+        app:backgroundTint="@null"
         android:layout_width="116dp"
         android:layout_height="57dp"
         android:layout_marginStart="50dp"
@@ -49,6 +51,8 @@
 
     <Button
         android:id="@+id/signUpButton"
+        android:background="@drawable/button"
+        app:backgroundTint="@null"
         android:layout_width="116dp"
         android:layout_height="57dp"
         android:layout_marginTop="60dp"

@@ -9,14 +9,18 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.coffeproject2.R
 import com.example.coffeproject2.adapters.CoffeDetailsAdapterr
 import com.example.coffeproject2.adapters.CoffeNameAdapter
 import com.example.coffeproject2.data.Coffees
 import com.example.coffeproject2.data.CoffessType
 import com.example.coffeproject2.databinding.FragmentHomeScreenBinding
 import com.example.coffeproject2.viewModels.ViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -32,6 +36,7 @@ class HomeScreen : Fragment() {
     private lateinit var coffeList: ArrayList<Coffees>
     private lateinit var clickedType: String
     private lateinit var viewModel: ViewModel
+    private lateinit var navController: NavController
 
     //Firebase
     private lateinit var referanceCoffes: DatabaseReference
@@ -40,12 +45,16 @@ class HomeScreen : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+        navController = findNavController()
+
         binding = FragmentHomeScreenBinding.inflate(inflater, container, false)
         binding.recViewCDetails.visibility = View.VISIBLE
 
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigationView.visibility = View.VISIBLE
+
+
         viewModel = ViewModelProvider(requireActivity()).get(ViewModel::class.java)
-
-
 
         binding.searchView
 
@@ -79,6 +88,8 @@ class HomeScreen : Fragment() {
             },
             onImageViewClick = { c ->
                 viewModel.selectedCoffee = c
+                navController.navigate(R.id.homeToDetail)
+
             }
         )
 

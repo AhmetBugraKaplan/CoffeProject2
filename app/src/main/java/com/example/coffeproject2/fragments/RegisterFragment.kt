@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.coffeproject2.R
 import com.example.coffeproject2.databinding.FragmentRegisterBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -20,6 +21,12 @@ class RegisterFragment : Fragment() {
     private lateinit var navController: NavController
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentRegisterBinding.inflate(inflater,container,false)
+
+        //Bottom bar invis yapma
+
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigationView.visibility = View.GONE
+
 
         auth = FirebaseAuth.getInstance()
         navController = findNavController()

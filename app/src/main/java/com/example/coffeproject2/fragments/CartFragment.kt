@@ -30,7 +30,7 @@ class CartFragment : Fragment() {
         binding.toolbar.foregroundGravity = Gravity.CENTER_HORIZONTAL
         binding.toolbar.setBackgroundColor(Color.parseColor("#9B5844"))
 
-        binding.textViewCartTotalPrice.text = viewModel.totalPrice.toString()
+        binding.textViewCartTotalPrice.text = "${viewModel.totalPrice.toString()} $"
 
 
         if(viewModel.totalPrice > 10.0){
