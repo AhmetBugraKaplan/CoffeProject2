@@ -1,4 +1,4 @@
-package com.example.coffeproject2.fragments
+package com.example.coffeproject2.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,62 +7,62 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.coffeproject2.R
-import com.example.coffeproject2.adapters.CoffeCartAdapter
-import com.example.coffeproject2.data.Coffees
+import com.example.coffeproject2.view.adapter.CoffeeCartAdapter
+import com.example.coffeproject2.data.Coffee
 import com.example.coffeproject2.databinding.FragmentCartBinding
-import com.example.coffeproject2.viewModels.ViewModel
+import com.example.coffeproject2.view.viewmodel.CoffeeViewModel
 import android.app.AlertDialog
 import android.graphics.Color
 import android.view.Gravity
 
-
 class CartFragment : Fragment() {
-    private lateinit var binding : FragmentCartBinding
-    private lateinit var cartCoffeList : ArrayList<Coffees>
-    private lateinit var cartAdapter: CoffeCartAdapter
-    private lateinit var viewModel: ViewModel
+    private lateinit var binding: FragmentCartBinding
+    private lateinit var cartCoffeeList: ArrayList<Coffee>
+    private lateinit var cartAdapter: CoffeeCartAdapter
+    private lateinit var viewModel: CoffeeViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = FragmentCartBinding.inflate(inflater,container,false)
-        viewModel = ViewModelProvider(requireActivity()).get(com.example.coffeproject2.viewModels.ViewModel::class.java)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = FragmentCartBinding.inflate(inflater, container, false)
+        viewModel = ViewModelProvider(requireActivity()).get(CoffeeViewModel::class.java)
 
         binding.toolbar.foregroundGravity = Gravity.CENTER_HORIZONTAL
         binding.toolbar.setBackgroundColor(Color.parseColor("#9B5844"))
 
-        binding.textViewCartTotalPrice.text = "${viewModel.totalPrice.toString()} $"
+        binding.textViewCartTotalPrice.text = "${viewModel.totalPrice} $"
 
 
-        if(viewModel.totalPrice > 10.0){
+        if (viewModel.totalPrice > 10.0) {
             binding.textViewCartDeliveryFee.text = "Free"
-        }else if (viewModel.totalPrice < 10.0 && viewModel.CartCoffeList.isNotEmpty()){
+        } else if (viewModel.totalPrice < 10.0 && viewModel.listCoffee.isNotEmpty()) {
             binding.textViewCartDeliveryFee.text = "1.99 $"
-        }else{
+        } else {
             binding.textViewCartDeliveryFee.visibility = View.INVISIBLE
         }
 
-        binding.textView4.text = viewModel.adress
-
+        binding.textView4.text = viewModel.dataAddress
 
         binding.recViewCart.setHasFixedSize(true)
-        binding.recViewCart.layoutManager =
-            LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+        binding.recViewCart.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
 
-        cartCoffeList = viewModel.CartCoffeList
+        cartCoffeeList = viewModel.listCoffee
 
-        cartAdapter = CoffeCartAdapter(requireContext(),cartCoffeList){ c->
-            cartCoffeList.remove(c)
+        cartAdapter = CoffeeCartAdapter(requireContext(), cartCoffeeList) { c ->
+            cartCoffeeList.remove(c)
             cartAdapter.notifyDataSetChanged()
 
-            viewModel.totalPrice -= c.CoffePrice!!
+            viewModel.totalPrice -= c.coffeePrice!!
 
             binding.textViewCartTotalPrice.text = "${viewModel.totalPrice.toString()} $"
 
-            if (viewModel.totalPrice < 10.0){
+            if (viewModel.totalPrice < 10.0) {
                 binding.textViewCartDeliveryFee.text = "1.99 $"
             }
-            if(viewModel.CartCoffeList.isEmpty()){
+            if (viewModel.listCoffee.isEmpty()) {
                 binding.textViewCartDeliveryFee.visibility = View.INVISIBLE
             }
         }
@@ -77,7 +77,7 @@ class CartFragment : Fragment() {
             builder.setMessage("Are you sure you want to confirm the order?")
 
             builder.setPositiveButton("Yes") { dialog, _ ->
-                viewModel.CartCoffeList.clear()
+                viewModel.listCoffee.clear()
                 cartAdapter.notifyDataSetChanged()
                 viewModel.totalPrice = 0.0
                 binding.textViewCartTotalPrice.text = "0.0"
@@ -92,16 +92,7 @@ class CartFragment : Fragment() {
 
             val dialog: AlertDialog = builder.create()
             dialog.show()
-
-
         }
-
-
-
-
-
-
-
 
         return binding.root
     }

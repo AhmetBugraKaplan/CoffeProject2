@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.coffeproject2.fragments.LoginFragment"
+        android:name="com.example.coffeproject2.view.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/homeScreen"
-        android:name="com.example.coffeproject2.fragments.HomeScreen"
+        android:name="com.example.coffeproject2.view.fragment.HomeFragment"
         android:label="fragment_home_screen"
         tools:layout="@layout/fragment_home_screen" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.coffeproject2.fragments.RegisterFragment"
+        android:name="com.example.coffeproject2.view.fragment.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action
@@ -37,17 +37,17 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_cart"
-        android:name="com.example.coffeproject2.fragments.CartFragment"
+        android:name="com.example.coffeproject2.view.fragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.coffeproject2.fragments.ProfileFragment"
+        android:name="com.example.coffeproject2.view.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.coffeproject2.fragments.DetailFragment"
+        android:name="com.example.coffeproject2.view.fragment.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
 </navigation>

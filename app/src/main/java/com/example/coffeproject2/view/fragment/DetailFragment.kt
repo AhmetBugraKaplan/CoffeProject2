@@ -1,4 +1,4 @@
-package com.example.coffeproject2.fragments
+package com.example.coffeproject2.view.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,34 +10,31 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.example.coffeproject2.R
 import com.example.coffeproject2.databinding.FragmentDetailBinding
-import com.example.coffeproject2.databinding.FragmentRegisterBinding
-import com.example.coffeproject2.viewModels.ViewModel
+import com.example.coffeproject2.view.viewmodel.CoffeeViewModel
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
-
 
 class DetailFragment : Fragment() {
 
     private lateinit var navController: NavController
 
     private lateinit var binding: FragmentDetailBinding
-    private lateinit var viewModel : ViewModel
-    var storage: FirebaseStorage = FirebaseStorage.getInstance()
+    private lateinit var viewModel : CoffeeViewModel
+    private var storage: FirebaseStorage = FirebaseStorage.getInstance()
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentDetailBinding.inflate(inflater,container,false)
-
         navController = findNavController()
 
-        viewModel = ViewModelProvider(requireActivity()).get(com.example.coffeproject2.viewModels.ViewModel::class.java)
-        viewModel.selectedCoffee?.let { coffee ->
-            binding.CoffeDetailsNameText.text = coffee.CoffeName
-            binding.CoffeeDataText.text = coffee.CoffeDetails
-            val imageRef = storage.reference.child("images/${coffee.imageView}.jpg")
+        viewModel = ViewModelProvider(requireActivity()).get(CoffeeViewModel::class.java)
+        viewModel.selectedCoffee.let { coffee ->
+            binding.CoffeDetailsNameText.text = coffee.coffeeName
+            binding.CoffeeDataText.text = coffee.coffeeDetail
+            val imageRef = storage.reference.child("images/${coffee.coffeeImageUrl}.jpg")
             imageRef.downloadUrl.addOnSuccessListener { uri ->
                 Picasso.get()
                     .load(uri)
@@ -47,10 +44,7 @@ class DetailFragment : Fragment() {
                 // Hata durumunda varsayılan bir resim göster
                 binding.CoffeDetailImage.setImageResource(R.drawable.ic_launcher_foreground)
             }
-
         }
         return binding.root
     }
-
-
 }
